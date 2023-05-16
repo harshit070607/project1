@@ -1,15 +1,25 @@
 
 var form1 = document.getElementById('formName');
-var ke = 0;
+
+var showItems = document.getElementById('detail');
+
+
 
 form1.addEventListener('submit', addInfo);
 
 function addInfo(e){
     e.preventDefault();
-    ke=ke+1;
-
+    
     var Name = document.getElementById('name').value;
     var Email = document.getElementById('email').value;
+
+   
+    var li2 = document.createElement('li');
+    li2.className="items";
+    li2.appendChild(document.createTextNode(Email));
+    li2.append(" is the email id of "+Name);
+
+    showItems.appendChild(li2);
     
     var obj = {
 
@@ -18,9 +28,17 @@ function addInfo(e){
 
     }
 
+if(localStorage.getItem(obj.email))
+{
+    alert('Aready exist');
+}
+else
+{
+   
 
-    let obj_serialized = JSON.stringify(obj);
-
-localStorage.setItem(ke,obj_serialized);
+//add data to local storage
+let obj_serialized = JSON.stringify(obj);
+localStorage.setItem(obj.email,obj_serialized);
+}
  
 }
