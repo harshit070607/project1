@@ -46,6 +46,12 @@ else
     dltbtn.appendChild(texbtn);
     li2.appendChild(dltbtn);
 
+    var editbtn = document.createElement('button');
+    editbtn.className='btn btn-primary btn-sm mx-2 my-2';
+    var textonbtn = document.createTextNode("Edit");
+    editbtn.appendChild(textonbtn);
+    li2.appendChild(editbtn);
+
     
     dltbtn.onclick=()=>
     {
@@ -53,6 +59,17 @@ else
         var rem = e.target.parentElement;
         detail.removeChild(rem);
         
+    }
+
+    editbtn.onclick=(e)=>
+    {
+        e.preventDefault();
+        localStorage.removeItem(obj.email);
+        var rem = e.target.parentElement;
+        detail.removeChild(rem);
+        document.getElementById('name').value = obj.name;
+        document.getElementById('email').value = obj.email;
+
     }
 
 
